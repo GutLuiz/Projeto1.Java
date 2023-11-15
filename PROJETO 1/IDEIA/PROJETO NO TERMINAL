@@ -1,0 +1,65 @@
+BEM VINDO AO JOGA.BET:
+MENU:
+1 - Criar evento
+2 - Fazer cadastro e depósito
+3 - Fazer aposta
+4 - Fazer um saque
+5 - Ver histórico
+6 - Sair
+Escolha uma opção: 1
+Digite o id dessa partida: 1
+Equipe 1: santos
+Odd da equipe 1: 1.90
+Equipe 2: flamengo
+Odd da equipe 2: 2.50
+Data: 12/11/2023
+Local: vila belmiro
+Evento criado com sucesso!
+
+Evento esportivo:  
+Administrador responsavel pela criação do evento: luiz gustavo
+PARTIDA: santos(1.9) x flamengo(2.5)
+DATA DA PARTIDA: 12/11/2023
+LOCAL DA PARTIDA : vila belmiro
+
+Deseja criar outro evento? (s/n): n
+MENU:
+1 - Criar evento
+2 - Fazer cadastro e depósito
+3 - Fazer aposta
+4 - Fazer um saque
+5 - Ver histórico
+6 - Sair
+Escolha uma opção: 2
+Digite seu nome: luiz gustavo lino vieira
+Digite seu email: luizgut@gmail.com
+Data de nascimento (dd/MM/yyyy): 12/09/2004
+Digite quanto você quer depositar: 200
+
+Cadastro e depósito feitos!
+Nome: luiz
+Data de nascimento: 12/09/2004
+Saldo na conta: 200.0
+
+MENU:
+1 - Criar evento
+2 - Fazer cadastro e depósito
+3 - Fazer aposta
+4 - Fazer um saque
+5 - Ver histórico
+6 - Sair
+Escolha uma opção: 3
+Digite o ID do evento esportivo: 1
+Digite o nome do time que voce quer apostar: santos
+Digite o valor que voce quer apostar nesse time: 200
+valor total da aposta: 380.0
+BOA SORTE!!!!
+
+MENU:
+1 - Criar evento
+2 - Fazer cadastro e depósito
+3 - Fazer aposta
+4 - Fazer um saque
+5 - Ver histórico
+6 - Sair
+Escolha uma opção: 
