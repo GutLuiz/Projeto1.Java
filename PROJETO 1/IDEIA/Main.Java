@@ -12,6 +12,7 @@ import entities.Evento;
 import entities.Usuario;
 
 public class Main {
+	private static Usuario usu;
 	public static void main(String[] args) throws ParseException {
 		Locale.setDefault(Locale.US);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -20,7 +21,7 @@ public class Main {
 
 		Administrador admin = new Administrador("luiz gustavo", 1234);
 		
-		Usuario usu = new Usuario();
+		
 
 		System.out.println("BEM VINDO AO JOGA.BET:");
 
@@ -45,7 +46,7 @@ public class Main {
 				fazerCadastroEdeposito(sc, sdf);
 				break;
 			case 3:
-				fazerAposta(sc,admin, usu);
+				fazerAposta(sc,admin);
 					break;
 
 			case 6:
@@ -64,6 +65,9 @@ public class Main {
 		char continuar = 's';
 
 		while (continuar == 's') {
+			System.out.print("Digite o id dessa partida: ");
+			int ID = sc.nextInt();
+			sc.nextLine();
 			System.out.print("Equipe 1: ");
 			String nome1 = sc.nextLine();
 			System.out.print("Odd da equipe 1: ");
@@ -85,7 +89,7 @@ public class Main {
 			Equipe equipe1 = new Equipe(nome1, odd1);
 			Equipe equipe2 = new Equipe(nome2, odd2);
 
-			Evento evento = new Evento(equipe1, equipe2, data, local);
+			Evento evento = new Evento(equipe1, equipe2, data, local, ID);
 
 			admin.adicionarEvento(evento);
 
@@ -116,38 +120,54 @@ public class Main {
 		System.out.print("Digite quanto você quer depositar: ");
 		double carteira = sc.nextDouble();
 
-		Usuario usu = new Usuario(name, email, data, carteira);
+		usu = new Usuario(name, email, data, carteira);
 
 		System.out.println();
 		System.out.println("Cadastro e depósito feitos!");
 		System.out.println(usu);
 	}
-	private static void fazerAposta(Scanner sc, Administrador admin, Usuario usu)	{
-		System.out.println("Digite o ID do evento esportivo: ");
+	private static void fazerAposta(Scanner sc, Administrador admin)	{
+		System.out.print("Digite o ID do evento esportivo: ");
 		int id = sc.nextInt();
 		sc.nextLine();
 		
 		Evento event = admin.obterEventoPorId(id);
 		
 		if(event != null) {
-			System.out.println("Digite o nome do time que voce quer apostar: ");
+			System.out.print("Digite o nome do time que voce quer apostar: ");
 			String timeAposta = sc.nextLine();
 			Equipe equipeApostada = null;
 				if(timeAposta.equals(event.getEquipe1().getNome())){ 
 					equipeApostada = event.getEquipe1();
-				}
-				else if (timeAposta.equals(event.getEquipe2().getNome())) {
-					equipeApostada = event.getEquipe2();
-				}
-					System.out.println("Digite o valor que voce quer apostar nesse time: ");
+					System.out.print("Digite o valor que voce quer apostar nesse time: ");
 					double valor = sc.nextDouble();
 						if(valor <= usu.getSaldo()) {
 							double valorTotal = valor * equipeApostada.getOdd();
 							System.out.println("valor total da aposta: " + valorTotal);
-						
+							 usu.setSaldo(usu.getSaldo() - valor);
+							 System.out.println("BOA SORTE!!!!");
+							 System.out.println();
 						}
 				}
+				else if (timeAposta.equals(event.getEquipe2().getNome())) {
+					equipeApostada = event.getEquipe2();
+					System.out.print("Digite o valor que voce quer apostar nesse time: ");
+					double valor = sc.nextDouble();
+						if(valor <= usu.getSaldo()) {
+							double valorTotal = valor * equipeApostada.getOdd();
+							System.out.println("valor total da aposta: " + valorTotal);
+							 usu.setSaldo(usu.getSaldo() - valor);
+							 System.out.println("BOA SORTE!!!!");
+							 System.out.println();
+						}
+						else {
+							System.out.println("Valor invalido, tente novamente!");
+						}
+				}
+						
+				}
 		}
+		
 		
 		
 		
