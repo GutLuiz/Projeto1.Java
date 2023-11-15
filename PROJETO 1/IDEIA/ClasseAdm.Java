@@ -46,6 +46,15 @@ public class Administrador {
 		 public void removerEvento(Evento event) {
 		     evento.remove(event);
 		}
+		 
+		public Evento obterEventoPorId(int id) {
+			for(Evento evento : evento) {
+				if(evento.getId() == id) {
+					return evento;
+				}
+			}
+			return null;
+		}
 
 		public String toString() {
 			StringBuilder event = new StringBuilder();
@@ -53,7 +62,9 @@ public class Administrador {
 			event.append("Administrador responsavel pela criação do evento: " + nome + "\n");
 			
 			for(Evento jogo : evento) {
-				event.append("PARTIDA: " + jogo.getEquipe1() + " x " + jogo.getEquipe2() + "\n");
+				event.append("PARTIDA: " + jogo.getEquipe1().getNome() + "(" + jogo.getEquipe1().getOdd() + ") ");
+				event.append("x ");
+				event.append(jogo.getEquipe2().getNome() + "(" + jogo.getEquipe2().getOdd() + ")\n");
 				event.append("DATA DA PARTIDA: " + sdf.format(jogo.getData()) + "\n");
 				event.append("LOCAL DA PARTIDA : " + jogo.getLocal());
 			}
