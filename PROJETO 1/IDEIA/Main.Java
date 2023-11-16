@@ -48,8 +48,12 @@ public class Main {
 			case 3:
 				fazerAposta(sc,admin);
 					break;
-
-			case 6:
+			case 5: 
+				fazerUmSaque(sc);
+				break;
+			case 6: verHistorico(sc);
+				break;
+			case 7:
 				System.out.println("Saindo do programa. Até mais!");
 				sc.close();
 				System.exit(0);
@@ -111,8 +115,8 @@ public class Main {
 		System.out.print("Digite seu nome: ");
 		String name = sc.next();
 		sc.nextLine();
-		System.out.print("Digite seu email: ");
-		String email = sc.next();
+		System.out.print("Digite sua senha (sem numeros): ");
+		String senha = sc.next();
 
 		System.out.print("Data de nascimento (dd/MM/yyyy): ");
 		Date data = sdf.parse(sc.next());
@@ -120,7 +124,7 @@ public class Main {
 		System.out.print("Digite quanto você quer depositar: ");
 		double carteira = sc.nextDouble();
 
-		usu = new Usuario(name, email, data, carteira);
+		usu = new Usuario(name, senha, data, carteira);
 
 		System.out.println();
 		System.out.println("Cadastro e depósito feitos!");
@@ -167,8 +171,29 @@ public class Main {
 						
 				}
 		}
+	private static void fazerUmSaque(Scanner sc) {
+	    System.out.print("Digite o valor que você deseja sacar: ");
+	    double valorSaq = sc.nextDouble();
+
+	    if (valorSaq <= usu.getSaldo()) {
+	        usu.setSaldo(usu.getSaldo() - valorSaq);
+	        System.out.println("Saque realizado com sucesso!");
+	        System.out.println("Saldo atual: " + usu.getSaldo());
+	    } else {
+	        System.out.println("Saldo insuficiente para realizar o saque.");
+	    }
+	}
+	private static void verHistorico(Scanner sc) {
+		System.out.println("BEM VINDO!, aqui você consegue ver se esta positivo ou negativo na JOGA.BET!, mas primeiro coloque suas informações de cadastro: ");
+		System.out.print("Digite seu nome: ");
+		String nomeHist = sc.nextLine();
+		System.out.print("Digite sua senha: ");
+		String senhaHist = sc.nextLine();
 		
-		
+		if(nomeHist == usu.getNome() & senhaHist == usu.getSenha()) {
+			
+		}
+	}
 		
 		
 	}
