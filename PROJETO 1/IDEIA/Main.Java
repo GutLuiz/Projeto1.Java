@@ -52,15 +52,13 @@ public class Main {
 			case 3:
 				fazerAposta(sc,admin);
 					break;
-			case 4:
-				fazerSimulacao(sc,admin);
-				break;
-			case 5: 
+			
+			case 4: 
 				fazerUmSaque(sc);
 				break;
-			case 6: verHistorico(sc);
+			case 5: verHistorico(sc);
 				break;
-			case 7:
+			case 6:
 				System.out.println("Saindo do programa. Até mais!");
 				sc.close();
 				System.exit(0);
@@ -82,7 +80,7 @@ public class Main {
 		int senha = sc.nextInt();
 	
 		
-		if ("luiz gustavo".equals(nome) && senha == 1234) {
+		if ("gustavo".equals(nome) && senha == 1234) {
 			char continuar = 's';
 
 			while (continuar == 's') {
@@ -126,6 +124,8 @@ public class Main {
 				continuar = sc.next().charAt(0);
 				sc.nextLine();
 			}
+		}else {
+			System.out.println("Cadastro do ADM invalido!");
 		}
 		
 	}
@@ -149,75 +149,84 @@ public class Main {
 		System.out.println("Cadastro e depósito feitos!");
 		System.out.println(usu);
 	}
-	private static void fazerAposta(Scanner sc, Administrador admin)	{
-		System.out.print("Digite o ID do evento esportivo: ");
-		int id = sc.nextInt();
-		sc.nextLine();
-		
-		Evento event = admin.obterEventoPorId(id);
-		
-		if(event != null) {
-			System.out.print("Digite o nome do time que voce quer apostar: ");
-			String timeAposta = sc.nextLine();
-			Equipe equipeApostada = null;
-				if(timeAposta.equals(event.getEquipe1().getNome())){ 
-					equipeApostada = event.getEquipe1();
-					System.out.print("Digite o valor que voce quer apostar nesse time: ");
-					
-					double valor = sc.nextDouble();
-					
-						if(valor <= usu.getSaldo()) {
-							double valorTotal = valor * equipeApostada.getOdd();
-							System.out.println("valor total da aposta: " + valorTotal);
-							 usu.setSaldo(usu.getSaldo() - valor);
-							 System.out.println("BOA SORTE!!!!");
-							 System.out.println();
-						}
-				}
-				else if (timeAposta.equals(event.getEquipe2().getNome())) {
-					equipeApostada = event.getEquipe2();
-					System.out.print("Digite o valor que voce quer apostar nesse time: ");
-					double valor = sc.nextDouble();
-						if(valor <= usu.getSaldo()) {
-							double valorTotal = valor * equipeApostada.getOdd();
-							System.out.println("valor total da aposta: " + valorTotal);
-							 usu.setSaldo(usu.getSaldo() - valor);
-							 System.out.println("BOA SORTE!!!!");
-							 System.out.println();
-						}
-						else {
-							System.out.println("Valor invalido, tente novamente!");
-						}
-				}
-						
-				}
-		}
-	private static void fazerSimulacao(Scanner sc, Administrador admin) {
-		System.out.print("Digite o Id do evento: ");
-		int id = sc.nextInt();
-		sc.nextLine();
-		
-		Evento evento = admin.obterEventoPorId(id);
-		
-		 if (evento != null) {
-		        Random rand = new Random();
-		       
-		        double resultado = rand.nextDouble();
-
-		        System.out.println("Resultado do evento:");
-
-		        if (resultado < 0.5) {
-		            System.out.println(evento.getEquipe1().getNome() + " venceu!");
-		           
-		        else {
-		            System.out.println(evento.getEquipe2().getNome() + " venceu!");
-		            
-		        }
-		    }
-			
-		}
+	private static void fazerAposta(Scanner sc, Administrador admin){
+	
 	
 
+			System.out.print("Digite o ID do evento esportivo: ");
+			int id = sc.nextInt();
+			sc.nextLine();
+			
+			Evento event = admin.obterEventoPorId(id);
+			
+			if(event != null) {
+				System.out.print("Digite o nome do time que voce quer apostar: ");
+				String timeAposta = sc.nextLine();
+				Equipe equipeApostada = null;
+					if(timeAposta.equals(event.getEquipe1().getNome())){ 
+						equipeApostada = event.getEquipe1();
+						System.out.print("Digite o valor que voce quer apostar nesse time: ");
+						
+						double valor = sc.nextDouble();
+						
+							if(valor <= usu.getSaldo()) {
+								double valorTotal = valor * equipeApostada.getOdd();
+								System.out.println("valor total da aposta: " + valorTotal);
+								 usu.setSaldo(usu.getSaldo() - valor);
+								 System.out.println("BOA SORTE!!!!");
+								 System.out.println();
+								 
+								 System.out.println("Agora vamos saber o resultado do evento, PREPARE - SE:");
+								 System.out.print("Digite o Id do evento: ");
+									int idd = sc.nextInt();
+									sc.nextLine();
+									
+									Evento evento = admin.obterEventoPorId(idd);
+									
+									 if (evento != null) {
+									        Random rand = new Random();
+									       
+									        double resultado = rand.nextDouble();
+
+									        System.out.println("Resultado do evento:");
+
+									        if (resultado < 0.5) {
+									            System.out.println(evento.getEquipe1().getNome() + " venceu!");
+									            	if(equipeApostada.getNome() == evento.getEquipe1().getNome()) {
+									            		double valorMaximo = usu.getSaldo() + valorTotal; 
+									            		System.out.println("Voce venceu a aposta, seu saldo é de  " + valorMaximo);
+									            	}
+									        }
+									        else {
+									            System.out.println(evento.getEquipe2().getNome() + " venceu!");
+									            if(equipeApostada.getNome() != evento.getEquipe2().getNome()) {
+								            		System.out.println("Voce perdeu a aposta, seu saldo é de  " + usu.getSaldo());
+								            	}
+									            
+									        }
+									    }
+							}
+					}
+					else if (timeAposta.equals(event.getEquipe2().getNome())) {
+						equipeApostada = event.getEquipe2();
+						System.out.print("Digite o valor que voce quer apostar nesse time: ");
+						double valor = sc.nextDouble();
+							if(valor <= usu.getSaldo()) {
+								double valorTotal = valor * equipeApostada.getOdd();
+								System.out.println("valor total da aposta: " + valorTotal);
+								 usu.setSaldo(usu.getSaldo() - valor);
+								 System.out.println("BOA SORTE!!!!");
+								 System.out.println();
+							}
+							else {
+								System.out.println("Valor invalido, tente novamente!");
+							}
+					}
+							
+					}
+		
+		}
+		
 	private static void fazerUmSaque(Scanner sc) {
 	    System.out.print("Digite o valor que você deseja sacar: ");
 	    double valorSaq = sc.nextDouble();
