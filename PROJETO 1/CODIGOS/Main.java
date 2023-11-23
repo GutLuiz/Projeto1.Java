@@ -189,12 +189,12 @@ public class Main {
 							System.out.println(evento.getEquipe1().getNome() + " venceu!");
 							if (equipeApostada.getNome() == evento.getEquipe1().getNome()) {
 								usu.setSaldo(usu.getSaldo() + valorTotal);
-								System.out.println("Voce venceu a aposta, seu saldo é de  " + usu.getSaldo());
+								System.out.println("Voce venceu a aposta!");
 							}
 						} else {
 							System.out.println(evento.getEquipe2().getNome() + " venceu!");
 							if (equipeApostada.getNome() != evento.getEquipe2().getNome()) {
-								System.out.println("Voce perdeu a aposta, seu saldo é de  " + usu.getSaldo());
+								System.out.println("Voce perdeu a aposta!");
 							}
 
 						}
@@ -229,12 +229,12 @@ public class Main {
 							System.out.println(evento.getEquipe1().getNome() + " venceu!");
 							if (equipeApostada.getNome() == evento.getEquipe1().getNome()) {
 								usu.setSaldo(usu.getSaldo() + valorTotal);
-								System.out.println("Voce venceu a aposta, seu saldo é de  " + usu.getSaldo());
+								System.out.println("Voce venceu a aposta!");
 							}
 						} else {
 							System.out.println(evento.getEquipe2().getNome() + " venceu!");
 							if (equipeApostada.getNome() != evento.getEquipe2().getNome()) {
-								System.out.println("Voce perdeu a aposta, seu saldo é de  " + usu.getSaldo());
+								System.out.println("Voce perdeu a aposta!");
 							}
 
 						}
@@ -256,15 +256,13 @@ public class Main {
 		if (valorSaq <= usu.getSaldo()) {
 			usu.setSaldo(usu.getSaldo() - valorSaq);
 			System.out.println("Saque realizado com sucesso!");
-			System.out.println("Saldo atual: " + usu.getSaldo());
 		} else {
 			System.out.println("Saldo insuficiente para realizar o saque.");
 		}
 	}
 
 	private static void verSaldo(Scanner sc) {
-		System.out.println(
-				"BEM VINDO!, aqui você consegue ver se esta positivo ou negativo na JOGA.BET!, mas primeiro coloque suas informações de cadastro: ");
+		System.out.println("BEM VINDO!, aqui você consegue ver seu saldo na JOGA.BET!, mas primeiro coloque suas informações de cadastro: ");
 		System.out.print("Digite seu nome: ");
 		String nomeHist = sc.nextLine();
 		System.out.print("Digite sua senha: ");
@@ -273,7 +271,9 @@ public class Main {
 		if (nomeHist.equals(usu.getNome()) && senhaHist == usu.getSenha()) {
 			System.out.printf("Seu valor na carteira : %.2f%n"  , usu.getSaldo());
 		}
+		else {
+			System.out.println("Cadastro invalido!");
+		}
 	}
 
 }
-
