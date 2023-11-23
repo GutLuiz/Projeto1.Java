@@ -33,10 +33,9 @@ public class Main {
 			System.out.println("1 - Criar evento");
 			System.out.println("2 - Fazer cadastro e depósito");
 			System.out.println("3 - Fazer aposta");
-			System.out.println("4 - Ver resultado");
-			System.out.println("5 - Fazer um saque");
-			System.out.println("6 - Ver histórico");
-			System.out.println("7 - Sair");
+			System.out.println("4 - Fazer um saque");
+			System.out.println("5 - Ver histórico");
+			System.out.println("6 - Sair");
 
 			System.out.print("Escolha uma opção: ");
 			int opcao = sc.nextInt();
@@ -52,7 +51,6 @@ public class Main {
 			case 3:
 				fazerAposta(sc,admin);
 					break;
-			
 			case 4: 
 				fazerUmSaque(sc);
 				break;
@@ -193,8 +191,8 @@ public class Main {
 									        if (resultado < 0.5) {
 									            System.out.println(evento.getEquipe1().getNome() + " venceu!");
 									            	if(equipeApostada.getNome() == evento.getEquipe1().getNome()) {
-									            		double valorMaximo = usu.getSaldo() + valorTotal; 
-									            		System.out.println("Voce venceu a aposta, seu saldo é de  " + valorMaximo);
+									            		usu.setSaldo(usu.getSaldo() + valorTotal);  
+									            		System.out.println("Voce venceu a aposta, seu saldo é de  " + usu.getSaldo());
 									            	}
 									        }
 									        else {
@@ -217,6 +215,38 @@ public class Main {
 								 usu.setSaldo(usu.getSaldo() - valor);
 								 System.out.println("BOA SORTE!!!!");
 								 System.out.println();
+								 
+								 System.out.println("Agora vamos saber o resultado do evento, PREPARE - SE:");
+								 System.out.print("Digite o Id do evento: ");
+									int idd = sc.nextInt();
+									sc.nextLine();
+									
+									Evento evento = admin.obterEventoPorId(idd);
+									
+									 if (evento != null) {
+									        Random rand = new Random();
+									       
+									        double resultado = rand.nextDouble();
+
+									        System.out.println("Resultado do evento:");
+
+									        if (resultado < 0.5) {
+									            System.out.println(evento.getEquipe1().getNome() + " venceu!");
+									            	if(equipeApostada.getNome() == evento.getEquipe1().getNome()) {
+									            		usu.setSaldo(usu.getSaldo() + valorTotal);  
+									            		System.out.println("Voce venceu a aposta, seu saldo é de  " + usu.getSaldo());
+									            	}
+									        }
+									        else {
+									            System.out.println(evento.getEquipe2().getNome() + " venceu!");
+									            if(equipeApostada.getNome() != evento.getEquipe2().getNome()) {
+								            		System.out.println("Voce perdeu a aposta, seu saldo é de  " + usu.getSaldo());
+								            	}
+									            
+									        }
+									    }
+								 
+								 
 							}
 							else {
 								System.out.println("Valor invalido, tente novamente!");
