@@ -18,7 +18,7 @@ public class Main {
 	private static Administrador admin;
 	public double valor = 0;
 	public double valorTotal= 0 ;
-	public double valorMaximo = 0;
+	
 	
 	public static void main(String[] args) throws ParseException {
 		Locale.setDefault(Locale.US);
@@ -193,7 +193,7 @@ public class Main {
 									        if (resultado < 0.5) {
 									            System.out.println(evento.getEquipe1().getNome() + " venceu!");
 									            	if(equipeApostada.getNome() == evento.getEquipe1().getNome()) {
-									            		 valorMaximo = usu.getSaldo() + valorTotal; 
+									            		double valorMaximo = usu.getSaldo() + valorTotal; 
 									            		System.out.println("Voce venceu a aposta, seu saldo é de  " + valorMaximo);
 									            	}
 									        }
