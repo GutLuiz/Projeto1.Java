@@ -1,0 +1,95 @@
+BEM VINDO AO JOGA.BET:
+MENU:
+1 - Criar evento
+2 - Fazer cadastro e depósito
+3 - Fazer aposta
+4 - Fazer um saque
+5 - Ver seu Saldo
+6 - Sair
+Escolha uma opção: 1
+Digite seu login de ADMINISTRADOR:
+Nome: gustavo
+Digite sua senha: 1234
+Digite o id dessa partida: 1
+Equipe 1: santos
+Odd da equipe 1: 1.87
+Equipe 2: flamengo
+Odd da equipe 2: 1.80
+Data: 23/11/2023
+Local: vila belmiro
+Evento criado com sucesso!
+
+Evento esportivo:  
+PARTIDA: santos(1.87) x flamengo(1.8)
+DATA DA PARTIDA: 23/11/2023
+LOCAL DA PARTIDA : vila belmiro
+
+Deseja criar outro evento? (s/n): n
+MENU:
+1 - Criar evento
+2 - Fazer cadastro e depósito
+3 - Fazer aposta
+4 - Fazer um saque
+5 - Ver seu Saldo
+6 - Sair
+Escolha uma opção: 2
+Digite seu nome: gut
+Digite sua senha (somente numeros): 123
+Data de nascimento (dd/MM/yyyy): 12/09/2004
+Digite quanto você quer depositar: 750
+
+Cadastro e depósito feitos!
+Nome: gut
+Data de nascimento: 12/09/2004
+Saldo na conta: 750.0
+
+MENU:
+1 - Criar evento
+2 - Fazer cadastro e depósito
+3 - Fazer aposta
+4 - Fazer um saque
+5 - Ver seu Saldo
+6 - Sair
+Escolha uma opção: 3
+Digite o ID do evento esportivo: 1
+Digite o nome do time que voce quer apostar: santos
+Digite o valor que voce quer apostar nesse time: 500
+valor total da aposta: 935.0
+BOA SORTE!!!!
+
+Agora vamos saber o resultado do evento, PREPARE - SE:
+Digite o Id do evento: 1
+Resultado do evento:
+flamengo venceu!
+Voce perdeu a aposta!
+MENU:
+1 - Criar evento
+2 - Fazer cadastro e depósito
+3 - Fazer aposta
+4 - Fazer um saque
+5 - Ver seu Saldo
+6 - Sair
+Escolha uma opção: 4
+Digite o valor que você deseja sacar: 50
+Saque realizado com sucesso!
+MENU:
+1 - Criar evento
+2 - Fazer cadastro e depósito
+3 - Fazer aposta
+4 - Fazer um saque
+5 - Ver seu Saldo
+6 - Sair
+Escolha uma opção: 5
+BEM VINDO!, aqui você consegue ver seu saldo na JOGA.BET!, mas primeiro coloque suas informações de cadastro: 
+Digite seu nome: gut
+Digite sua senha: 123
+Seu valor na carteira : 200.00
+MENU:
+1 - Criar evento
+2 - Fazer cadastro e depósito
+3 - Fazer aposta
+4 - Fazer um saque
+5 - Ver seu Saldo
+6 - Sair
+Escolha uma opção: 6
+Saindo do programa. Até mais!
